@@ -1,0 +1,30 @@
+trigger:
+  - main
+
+stages:
+  - stage:
+    displayName: AZ login and aks login
+    jobs:
+    - job:
+      displayName:
+      pool: Terraform
+      steps:
+      - task: AzureCLI@2
+        inputs:
+          azureSubscription: 'npdmemberappazure'
+          scriptType: 'bash'
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            az login --service-principal --username $servicePrincipalId --password $servicePrincipalKey --tenant $tenantId
+            az account set --subscription 2e0e66e4-b751-4581-a783-9ce6a532926b
+            az aks get-credentials -n ntuc-aks-dev -g ntuc-deployment-rg-dev
+        displayName: Az and aks connect
+      - script: |
+          kubectl apply -f App/deployment.yml
+          kubectl apply -f Service/service.yml
+        displayName: Deploy Demo App
+      - script: |
+          IP=$(kubectl get service/servicename -o jsonpath='{.spec.clusterIP})
+          curl $(IP)/weather
+        displayName: Checking App Status
+
