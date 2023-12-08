@@ -1,6 +1,7 @@
 trigger:
   - main
-
+variables:
+ - group: 
 stages:
   - stage:
     displayName: AZ login and aks login
@@ -12,20 +13,20 @@ stages:
       steps:
       - task: AzureCLI@2
         inputs:
-          azureSubscription: 'HuynhHuuThangConnection'
+          azureSubscription: 'npdmemberappazure'
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
           inlineScript: |
             az login --service-principal --username $servicePrincipalId --password $servicePrincipalKey  --tenant $tenantId 
-            az account set --subscription 508d78f4-b324-4fd2-8c65-97a16b34c52b
-            az aks get-credentials -n demoaks -g demo --admin --overwrite-existing
+            az account set --subscription 2e0e66e4-b751-4581-a783-9ce6a532926b
+            az aks get-credentials -n ntuc-aks-dev -g ntuc-deployment-rg-dev --admin --overwrite-existing
         displayName: Az and aks connect
       - task: Kubernetes@1
         inputs:
           connectionType: 'Azure Resource Manager'
-          azureSubscriptionEndpoint: 'HuynhHuuThangConnection'
-          azureResourceGroup: 'demo'
-          kubernetesCluster: 'demoaks'
+          azureSubscriptionEndpoint: 'npdmemberappazure'
+          azureResourceGroup: 'ntuc-deployment-rg-dev'
+          kubernetesCluster: 'ntuc-aks-dev'
           useClusterAdmin: true
           namespace: 'default'
           command: 'apply'
@@ -37,9 +38,9 @@ stages:
       - task: Kubernetes@1
         inputs:
           connectionType: 'Azure Resource Manager'
-          azureSubscriptionEndpoint: 'HuynhHuuThangConnection'
-          azureResourceGroup: 'demo'
-          kubernetesCluster: 'demoaks'
+          azureSubscriptionEndpoint: 'npdmemberappazure'
+          azureResourceGroup: 'ntuc-deployment-rg-dev'
+          kubernetesCluster: 'ntuc-aks-dev'
           useClusterAdmin: true
           namespace: 'default'
           command: 'apply'
