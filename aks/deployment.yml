@@ -33,6 +33,21 @@ stages:
           configuration: './App/deployment.yml'
           secretType: 'dockerRegistry'
           containerRegistryType: 'Azure Container Registry'
+        displayName: deploy Weather App deployment
+      - task: Kubernetes@1
+        inputs:
+          connectionType: 'Azure Resource Manager'
+          azureSubscriptionEndpoint: 'HuynhHuuThangConnection'
+          azureResourceGroup: 'demo'
+          kubernetesCluster: 'demoaks'
+          useClusterAdmin: true
+          namespace: 'default'
+          command: 'apply'
+          useConfigurationFile: true
+          configuration: './Service/service.yml'
+          secretType: 'dockerRegistry'
+          containerRegistryType: 'Azure Container Registry'
+        displayName: deploy Service
       # - script: |
       #     kubectl apply -f App/deployment.yml
       #     kubectl apply -f Service/service.yml
