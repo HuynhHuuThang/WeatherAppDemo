@@ -1,7 +1,7 @@
 trigger:
   - main
 variables:
- - group: 
+ - group: dev-service-demo
 stages:
   - stage:
     displayName: AZ login and aks login
