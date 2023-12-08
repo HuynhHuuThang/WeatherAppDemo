@@ -38,7 +38,9 @@ stages:
       #     kubectl apply -f Service/service.yml
       #   displayName: Deploy Demo App
       - script: |
-          IP=$(kubectl get service/servicename -o jsonpath='{.spec.clusterIP})
-          curl $(IP)/weather
+          kubectl get deployment
+          kubectl get service
+          # IP=$(kubectl get service/servicename -o jsonpath='{.spec.clusterIP})
+          # curl $(IP)/weather
         displayName: Checking App Status
 
