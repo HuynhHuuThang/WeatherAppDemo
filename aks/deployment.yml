@@ -16,7 +16,7 @@ stages:
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
           inlineScript: |
-            az login --service-principal --username 6aec4f7-a399-44f1-9f25-85d891cf0265 --password T6E8Q~JWc26OX.ViH8ZUCsQwj90q.4rL2iNGHb-~ --tenant 93f33571-550f-43cf-b09f-cd331338d086
+            az login --service-principal --username 82d47e00-b31d-4dfa-bedc-56c93cdc2e71 --password T6E8Q~JWc26OX.ViH8ZUCsQwj90q.4rL2iNGHb-~ --tenant 93f33571-550f-43cf-b09f-cd331338d086
             az account set --subscription 508d78f4-b324-4fd2-8c65-97a16b34c52b
             az aks get-credentials -n demoaks -g demo --admin --overwrite-existing
         displayName: Az and aks connect
