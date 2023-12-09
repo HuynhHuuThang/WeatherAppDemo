@@ -8,8 +8,8 @@ stages:
     jobs:
     - job:
       displayName:
-      pool:
-        vmImage: ubuntu-latest
+      pool: Terraform
+        # vmImage: ubuntu-latest
       steps:
       - task: AzureCLI@2
         inputs:
