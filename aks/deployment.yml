@@ -31,7 +31,7 @@ stages:
           namespace: 'default'
           command: 'apply'
           useConfigurationFile: true
-          configuration: './App/azure-vote-app-deployment.yml'
+          configuration: './App/aks-helloworld-one.yml'
           secretType: 'dockerRegistry'
           containerRegistryType: 'Azure Container Registry'
         displayName: deploy Weather App deployment
@@ -45,7 +45,7 @@ stages:
           namespace: 'default'
           command: 'apply'
           useConfigurationFile: true
-          configuration: './Service/azure-vote-app-service.yml'
+          configuration: './Service/aks-helloworld-two.yml'
           secretType: 'dockerRegistry'
           containerRegistryType: 'Azure Container Registry'
         displayName: deploy Service
