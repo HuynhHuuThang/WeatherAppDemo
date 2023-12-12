@@ -31,24 +31,24 @@ stages:
           namespace: 'default'
           command: 'apply'
           useConfigurationFile: true
-          configuration: './App/aks-helloworld-one.yml'
-          secretType: 'dockerRegistry'
-          containerRegistryType: 'Azure Container Registry'
-        displayName: deploy Weather App deployment
-      - task: Kubernetes@1
-        inputs:
-          connectionType: 'Azure Resource Manager'
-          azureSubscriptionEndpoint: 'npdmemberappazure'
-          azureResourceGroup: 'AKSNTUC-dev'
-          kubernetesCluster: 'ntuc-aks-dev'
-          useClusterAdmin: true
-          namespace: 'default'
-          command: 'apply'
-          useConfigurationFile: true
           configuration: './App/aks-helloworld-two.yml'
           secretType: 'dockerRegistry'
           containerRegistryType: 'Azure Container Registry'
-        displayName: deploy Service
+      #   displayName: deploy Weather App deployment
+      # - task: Kubernetes@1
+      #   inputs:
+      #     connectionType: 'Azure Resource Manager'
+      #     azureSubscriptionEndpoint: 'npdmemberappazure'
+      #     azureResourceGroup: 'AKSNTUC-dev'
+      #     kubernetesCluster: 'ntuc-aks-dev'
+      #     useClusterAdmin: true
+      #     namespace: 'default'
+      #     command: 'apply'
+      #     useConfigurationFile: true
+      #     configuration: './App/aks-helloworld-two.yml'
+      #     secretType: 'dockerRegistry'
+      #     containerRegistryType: 'Azure Container Registry'
+      #   displayName: deploy Service
       # - script: |
       #     kubectl apply -f App/deployment.yml
       #     kubectl apply -f Service/service.yml
