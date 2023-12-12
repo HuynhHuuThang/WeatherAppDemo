@@ -31,7 +31,7 @@ stages:
           namespace: 'default'
           command: 'apply'
           useConfigurationFile: true
-          configuration: './App/aks-helloworld-two.yml'
+          configuration: './App/aks-helloworld-ingress.yml'
           secretType: 'dockerRegistry'
           containerRegistryType: 'Azure Container Registry'
       #   displayName: deploy Weather App deployment
