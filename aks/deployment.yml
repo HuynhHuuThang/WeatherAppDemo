@@ -18,13 +18,9 @@ stages:
           scriptLocation: 'inlineScript'
           inlineScript: |
             az login --service-principal --username $servicePrincipalId --password $servicePrincipalKey  --tenant $tenantId 
-            az account set --subscription 2e0e66e4-b751-4581-a783-9ce6a532926b
-            az aks get-credentials -n ntuc-aks-dev -g ntuc-deployment-rg-dev --admin --overwrite-existing
+            az account set --subscription b26d186e-726c-4644-9002-994c46af0dfe
+            az aks get-credentials -n ntuc-aks-dev -g AKSNTUC-dev --admin --overwrite-existing
         displayName: Az and aks connect
-      - task: HelmInstaller@0
-        inputs:
-          helmVersion: '2.14.1'
-          installKubectl: true
       - task: Kubernetes@1
         inputs:
           connectionType: 'Azure Resource Manager'
