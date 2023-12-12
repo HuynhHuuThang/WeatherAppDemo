@@ -25,7 +25,7 @@ stages:
         inputs:
           connectionType: 'Azure Resource Manager'
           azureSubscriptionEndpoint: 'npdmemberappazure'
-          azureResourceGroup: 'ntuc-deployment-rg-dev'
+          azureResourceGroup: 'AKSNTUC-dev'
           kubernetesCluster: 'ntuc-aks-dev'
           useClusterAdmin: true
           namespace: 'default'
@@ -39,7 +39,7 @@ stages:
         inputs:
           connectionType: 'Azure Resource Manager'
           azureSubscriptionEndpoint: 'npdmemberappazure'
-          azureResourceGroup: 'ntuc-deployment-rg-dev'
+          azureResourceGroup: 'AKSNTUC-dev'
           kubernetesCluster: 'ntuc-aks-dev'
           useClusterAdmin: true
           namespace: 'default'
