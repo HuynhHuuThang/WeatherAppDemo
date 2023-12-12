@@ -45,7 +45,7 @@ stages:
           namespace: 'default'
           command: 'apply'
           useConfigurationFile: true
-          configuration: './Service/aks-helloworld-two.yml'
+          configuration: './App/aks-helloworld-two.yml'
           secretType: 'dockerRegistry'
           containerRegistryType: 'Azure Container Registry'
         displayName: deploy Service
